@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:latest
+    deploy:
+      replicas: 3
+    ports:
+      - "8000:80"
+    networks:
+      - ch03
+
+  api:
+    image: registry:5000/example/echo:latest
+    deploy:
+      replicas: 3
+    networks:
+      - ch03
+
+networks:
+  ch03:
+    external: true

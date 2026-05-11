@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  haproxy:
+    image: haproxy:latest
+    networks:
+      - ch03
+    deploy:
+      mode: global
+    ports:
+      - 80:80
+
+networks:
+  ch03:
+    external: true
