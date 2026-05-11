@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  nginx:
+    image: registry:5000/ch04/nginx-nuxt:latest
+    deploy:
+      replicas: 1
+    environment:
+      BACKEND_HOST: todo_frontend_web:3000
+    networks:
+      - todoapp
+    volumes:
+      - assets:/var/www
+
+  web:
+    image: registry:5000/ch04/todoweb:latest
+    deploy:
+      replicas: 2
+    environment:
+      TODO_API_URL: http://todo_nginx/todo
+    networks:
+      - todoapp
+    volumes:
+      - assets:/todoweb/.nuxt/dist
+
+networks:
+  todoapp:
+    external: true
+
+volumes:
+  assets:
+    driver: local

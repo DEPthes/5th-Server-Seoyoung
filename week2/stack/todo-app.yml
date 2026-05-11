@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  nginx:
+    image: ch04/todonginx:latest
+    deploy:
+      replicas: 2
+    environment:
+      BACKEND_HOST: "todo_api:8080"
+    depends_on:
+      - api
+    ports:
+      - 80:80
+    networks:
+      - todoapp
+
+  api:
+    image: ch04/todoapi:latest
+    deploy:
+      replicas: 2
+    environment:
+      TODO_BIND: ":8080"
+      TODO_MASTER_URL: "gihyo:gihyo@tcp(todo_master:3306)/tododb?parseTime=true"
+      TODO_SLAVE_URL: "gihyo:gihyo@tcp(todo_slave:3306)/tododb?parseTime=true"
+    networks:
+      - todoapp
+
+networks:
+  todoapp:
+    external: true

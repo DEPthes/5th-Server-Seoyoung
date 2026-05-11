@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  web:
+    image: registry:5000/ch04/todoweb:latest
+    deploy:
+      replicas: 2
+    environment:
+      TODO_API_URL: http://todo_nginx/todo
+    networks:
+      - todoapp
+
+networks:
+  todoapp:
+    external: true
