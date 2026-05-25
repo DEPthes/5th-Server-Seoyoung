@@ -26,4 +26,4 @@ jenkins_home/
 registry-data/
 
 # Docker 이미지 백업 파일
-*.tar
+*.tarnginx-secret.yaml
