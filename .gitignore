@@ -27,3 +27,9 @@ registry-data/
 
 # Docker 이미지 백업 파일
 *.tarnginx-secret.yaml
+
+# Docker image archive files
+*.tar
+
+# Kubernetes secret files
+*secret*.yaml
