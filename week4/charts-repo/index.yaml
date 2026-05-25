@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  echo:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2026-05-24T17:05:04.761296+09:00"
+    description: A Helm chart for Kubernetes
+    digest: d1df1a126ea7d0af0e9149878b91fda3edb91e95a112981e44255e9327c6e841
+    name: echo
+    type: application
+    urls:
+    - http://localhost:8879/echo-0.1.0.tgz
+    version: 0.1.0
+generated: "2026-05-24T17:05:04.760453+09:00"
