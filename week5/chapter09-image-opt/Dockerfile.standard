@@ -1,0 +1,8 @@
+FROM alpine:3.24
+
+RUN mkdir /work
+RUN dd if=/dev/zero of=/work/bigfile bs=1M count=20
+RUN echo "Hello Docker Layer" > /work/result.txt
+RUN rm /work/bigfile
+
+CMD ["cat", "/work/result.txt"]
